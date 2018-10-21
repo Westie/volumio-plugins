@@ -31,6 +31,8 @@ ControllerAmpache.prototype.onVolumioStart = function()
 	
 	this.config = new (require("v-conf"))();
 	this.config.loadFile(file);
+	
+	return libQ.resolve();
 }
 
 
@@ -39,6 +41,8 @@ ControllerAmpache.prototype.onVolumioStart = function()
  */
 ControllerAmpache.prototype.onStart = function()
 {
+	var defer = libQ.defer();
+	
 	var username = this.config.get("username");
 	var password = this.config.get("password");
 	var endpoint = this.config.get("endpoint");
@@ -49,12 +53,20 @@ ControllerAmpache.prototype.onStart = function()
 	
 	this.ampache.authenticate(function(err, body)
 	{
-		if(!err)
+		if(err)
+		{
+			defer.reject();
+		}
+		else
 		{
 			this.active = true;
 			this.session = body;
+			
+			defer.resolve();
 		}
 	});
+	
+	return defer.promise;
 }
 
 
