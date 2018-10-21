@@ -32,6 +32,9 @@ ControllerAmpache.prototype.onVolumioStart = function()
 	this.config = new (require("v-conf"))();
 	this.config.loadFile(file);
 	
+	this.logger("Started Ampache plugin");
+	this.logger(Object.prototype.toString.call(libQ.resolve()));
+	
 	return libQ.resolve();
 }
 
