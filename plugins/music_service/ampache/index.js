@@ -84,12 +84,13 @@ ControllerAmpache.prototype.getConfigurationFiles = function()
  */
 ControllerAmpache.prototype.saveAmpacheAccount = function(data)
 {
-	var self = this;
 	var defer = libQ.defer();
 	
-	self.config.set("username", data["username"]);
-	self.config.set("password", data["password"]);
-	self.config.set("endpoint", data["endpoint"]);
+	this.config.set("username", data["username"]);
+	this.config.set("password", data["password"]);
+	this.config.set("endpoint", data["endpoint"]);
+	
+	this.commandRouter.pushToastMessage("success", "Configuration update", "The configuration has been successfully updated");
 	
 	return defer.resolve();
 };
