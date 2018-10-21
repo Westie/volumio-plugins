@@ -1,7 +1,7 @@
 {
-  "name": "volumio_ampache",
+  "name": "ampache",
   "version": "1.0.0",
-  "description": "Example Plugin for Volumio2",
+  "description": "Ampache",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "volumio_info": {
-    "prettyName": "Example Plugin",
+    "prettyName": "Ampache",
     "icon": "fa-lightbulb-o",
     "plugin_type": "music_service"
   },
