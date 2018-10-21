@@ -80,6 +80,22 @@ ControllerAmpache.prototype.getConfigurationFiles = function()
 
 
 /**
+ *	Save configuration files
+ */
+ControllerAmpache.prototype.saveAmpacheAccount = function(data)
+{
+	var self = this;
+	var defer = libQ.defer();
+	
+	self.config.set("username", data["username"]);
+	self.config.set("password", data["password"]);
+	self.config.set("endpoint", data["endpoint"]);
+	
+	return defer.resolve();
+};
+
+
+/**
  *	Get UI config
  */
 ControllerAmpache.prototype.getUIConfig = function()
